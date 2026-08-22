@@ -1,6 +1,6 @@
-# Theming
+﻿# Theming
 
-Tabula's appearance is fully controlled from the `settings` block in your `api.json`. No CSS editing required.
+Veld's appearance is fully controlled from the `settings` block in your `api.json`. No CSS editing required.
 
 ---
 
@@ -35,7 +35,7 @@ The `logo` field accepts:
 
 The image is rendered at **36 px tall** in the header, with `width: auto` to preserve aspect ratio. Any web-compatible format works: SVG, PNG, WebP, or JPEG.
 
-> **Default** — When you scaffold a project with `tabula init`, a `logo.svg` file is included in the output folder. It uses the Tabula icon and wordmark and can be replaced at any time.
+> **Default** â€” When you scaffold a project with `Veld init`, a `logo.svg` file is included in the output folder. It uses the Veld icon and wordmark and can be replaced at any time.
 
 ---
 
@@ -49,9 +49,9 @@ The image is rendered at **36 px tall** in the header, with `width: auto` to pre
 
 The `favicon` field accepts the same values as `logo`: a relative path or an absolute URL.
 
-Supported formats: **SVG** (recommended — scales to any size, works in all modern browsers), **PNG**, or **ICO**.
+Supported formats: **SVG** (recommended â€” scales to any size, works in all modern browsers), **PNG**, or **ICO**.
 
-> **Default** — `tabula init` also copies a `favicon.svg` into your docs folder. It uses the Tabula table-grid icon. Replace it with your own to match your project branding.
+> **Default** â€” `Veld init` also copies a `favicon.svg` into your docs folder. It uses the Veld table-grid icon. Replace it with your own to match your project branding.
 
 ### Using a relative path
 
@@ -59,10 +59,10 @@ Place your files next to `index.html` and reference them with `./`:
 
 ```
 my-docs/
-├── index.html
-├── api.json
-├── logo.svg        ← referenced as "./logo.svg"
-└── favicon.svg     ← referenced as "./favicon.svg"
+â”œâ”€â”€ index.html
+â”œâ”€â”€ api.json
+â”œâ”€â”€ logo.svg        â† referenced as "./logo.svg"
+â””â”€â”€ favicon.svg     â† referenced as "./favicon.svg"
 ```
 
 ```json
@@ -91,7 +91,7 @@ Links are rendered in the top-right of the header and open in a new tab.
 
 ## Colors
 
-### Light mode — `theme`
+### Light mode â€” `theme`
 
 ```json
 "settings": {
@@ -109,9 +109,9 @@ Links are rendered in the top-right of the header and open in a new tab.
 }
 ```
 
-### Dark mode — `darkTheme`
+### Dark mode â€” `darkTheme`
 
-Applied automatically when `prefers-color-scheme: dark` is active. Accepts the same color keys as `theme` (font fields are excluded — font families are not mode-specific).
+Applied automatically when `prefers-color-scheme: dark` is active. Accepts the same color keys as `theme` (font fields are excluded â€” font families are not mode-specific).
 
 ```json
 "settings": {
@@ -141,7 +141,7 @@ Applied automatically when `prefers-color-scheme: dark` is active. Accepts the s
 | `fontBody`    | `--font-body`    | All body text                                |
 | `fontMono`    | `--font-mono`    | Code blocks, response previews               |
 
-> **Note** — Method background tints are derived automatically using `rgb(from var(--blue) r g b / 0.15)`. Changing `colorGet`, `colorPost`, `colorPut`, or `colorDelete` updates both the solid badge and the transparent tint in one go.
+> **Note** â€” Method background tints are derived automatically using `rgb(from var(--blue) r g b / 0.15)`. Changing `colorGet`, `colorPost`, `colorPut`, or `colorDelete` updates both the solid badge and the transparent tint in one go.
 
 ---
 
@@ -181,3 +181,4 @@ Applied automatically when `prefers-color-scheme: dark` is active. Accepts the s
   }
 }
 ```
+

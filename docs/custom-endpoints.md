@@ -1,6 +1,6 @@
-# Custom endpoints
+﻿# Custom endpoints
 
-`customEndpoints` let you document any endpoint that does not map to the standard CRUD pattern — actions, state transitions, bulk operations, file uploads, and more.
+`customEndpoints` let you document any endpoint that does not map to the standard CRUD pattern â€” actions, state transitions, bulk operations, file uploads, and more.
 
 ---
 
@@ -51,12 +51,12 @@ The resolved URI for this endpoint would be `/posts/{ID}/publish`.
 
 | Field             | Type                                    | Required | Description                                                           |
 | ----------------- | --------------------------------------- | -------- | --------------------------------------------------------------------- |
-| `name`            | `string`                                | yes      | Display name — must be unique within the table                        |
+| `name`            | `string`                                | yes      | Display name â€” must be unique within the table                        |
 | `description`     | `string`                                | no       | Shown below the endpoint title in the UI                              |
 | `uri`             | `string`                                | yes      | Path appended to the table `uri` (e.g. `"/{ID}/ship"`)               |
 | `method`          | `"GET" \| "POST" \| "PUT" \| "DELETE"` | yes      | HTTP method                                                           |
 | `tokenRequired`   | `boolean`                               | no       | Defaults: `false` for GET, `true` for POST/PUT/DELETE                 |
-| `responses`       | `Response[]`                            | no       | Expected responses — supports full objects and integer shorthands     |
+| `responses`       | `Response[]`                            | no       | Expected responses â€” supports full objects and integer shorthands     |
 | `body`            | `object`                                | no       | JSON body schema displayed and pre-filled in the UI                   |
 | `queryParameters` | `QueryParameter[]`                      | no       | URL query parameters rendered as form fields                          |
 | `uriParameters`   | `UriParameter[]`                        | no       | Additional path parameters beyond those inherited from the table      |
@@ -73,7 +73,7 @@ Each entry in `responses` can be either a **full object** or an **integer shorth
 { "code": 200, "response": { "message": "Shipped successfully", "trackingNumber": "string" } }
 ```
 
-Error responses (code ≥ 400) must include a `response` object with a matching `code` and a non-empty `message`.
+Error responses (code â‰¥ 400) must include a `response` object with a matching `code` and a non-empty `message`.
 
 ### Integer shorthand
 
@@ -81,7 +81,7 @@ Error responses (code ≥ 400) must include a `response` object with a matching 
 401
 ```
 
-The integer must reference a code declared in `defaultErrors`. At runtime, Tabula resolves it to the full response object defined there.
+The integer must reference a code declared in `defaultErrors`. At runtime, Veld resolves it to the full response object defined there.
 
 ### Mixing both
 
@@ -119,7 +119,7 @@ Set `multipart: true` inside the `body` to render a file drop zone instead of a 
     "fields": [
       {
         "name": "file",
-        "label": "Image (JPEG or PNG — max 5 MB)",
+        "label": "Image (JPEG or PNG â€” max 5 MB)",
         "type": "file",
         "required": true,
         "accept": ["image/jpeg", "image/png"],
@@ -144,3 +144,4 @@ Set `multipart: true` inside the `body` to render a file drop zone instead of a 
 ```
 
 See `examples/ecommerce/api.json` for a full working example.
+

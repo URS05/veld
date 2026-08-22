@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 
 import { createServer } from 'node:http';
 import { createReadStream, existsSync } from 'node:fs';
@@ -10,7 +10,7 @@ import { createInterface } from 'node:readline';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const MIME = {
 	'.html': 'text/html; charset=utf-8',
@@ -36,15 +36,15 @@ const bold = (s) => `\x1b[1m${s}\x1b[0m`;
 const dim = (s) => `\x1b[2m${s}\x1b[0m`;
 const cyan = (s) => `\x1b[36m${s}\x1b[0m`;
 
-// ─── Template registry ────────────────────────────────────────────────────────
+// â”€â”€â”€ Template registry â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const TEMPLATES = [
 	{ name: 'minimal', label: 'Minimal', description: '2 tables, ready in 30 seconds' },
-	{ name: 'blog', label: 'Blog', description: 'Realistic CRUD — posts, users, tags' },
+	{ name: 'blog', label: 'Blog', description: 'Realistic CRUD â€” posts, users, tags' },
 	{
 		name: 'ecommerce',
 		label: 'E-commerce',
-		description: 'Advanced — uploads, order state, full auth',
+		description: 'Advanced â€” uploads, order state, full auth',
 	},
 ];
 
@@ -60,7 +60,7 @@ const SRC_FILES = [
 	'assets/styles/styles.css',
 ];
 
-// ─── Version check ────────────────────────────────────────────────────────────
+// â”€â”€â”€ Version check â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Reads the local package version from package.json.
@@ -78,7 +78,7 @@ async function getLocalVersion() {
 
 /**
  * Compares two semver strings. Returns true if `b` is strictly greater than `a`.
- * Only handles MAJOR.MINOR.PATCH — no pre-release suffixes.
+ * Only handles MAJOR.MINOR.PATCH â€” no pre-release suffixes.
  *
  * @param {string} a - Installed version.
  * @param {string} b - Latest version.
@@ -95,7 +95,7 @@ function isNewer(a, b) {
 
 /**
  * Fetches the latest release tag from GitHub and prints an upgrade notice if a
- * newer version is available. Runs fire-and-forget with a 3-second timeout —
+ * newer version is available. Runs fire-and-forget with a 3-second timeout â€”
  * never blocks the main command and fails silently on any network error.
  *
  * @param {string} localVersion - The currently installed version.
@@ -105,8 +105,8 @@ async function checkForUpdates(localVersion) {
 	if (localVersion === 'unknown') return;
 
 	try {
-		const res = await fetch('https://api.github.com/repos/Lauwed/tabula-docs/releases/latest', {
-			headers: { 'User-Agent': 'tabula-docs-cli' },
+		const res = await fetch('https://api.github.com/repos/usher-2002/tabula-docs-to_make/releases/latest', {
+			headers: { 'User-Agent': 'veld-cli' },
 			signal: AbortSignal.timeout(3000),
 		});
 
@@ -118,34 +118,34 @@ async function checkForUpdates(localVersion) {
 		const latest = tag_name.replace(/^v/, '');
 
 		if (isNewer(localVersion, latest)) {
-			console.log(yellow('\n  ╭─────────────────────────────────────────────────╮'));
+			console.log(yellow('\n  â•­â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•®'));
 			console.log(
-				yellow('  │') +
-					`  Update available: ${dim(`v${localVersion}`)} → ${green(`v${latest}`)}` +
-					yellow('  │')
+				yellow('  â”‚') +
+					`  Update available: ${dim(`v${localVersion}`)} â†’ ${green(`v${latest}`)}` +
+					yellow('  â”‚')
 			);
 			console.log(
-				yellow('  │') + `  Run ${bold('npm install -g tabula-docs')} to upgrade  ` + yellow('│')
+				yellow('  â”‚') + `  Run ${bold('npm install -g veld')} to upgrade  ` + yellow('â”‚')
 			);
-			console.log(yellow('  ╰─────────────────────────────────────────────────╯\n'));
+			console.log(yellow('  â•°â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â•¯\n'));
 		}
 	} catch {
-		// Silent — no network, DNS failure, timeout, or unexpected payload.
+		// Silent â€” no network, DNS failure, timeout, or unexpected payload.
 		// Never interrupt the user's workflow for a version check.
 	}
 }
 
-// ─── Usage ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Usage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const usage = () => {
 	console.log(`
-${bold('tabula')} — Static, dependency-free API documentation
+${bold('veld')} â€” Static, dependency-free API documentation
 
 ${bold('Usage')}
-  tabula-docs init [dir] [--template <name>]   Scaffold a new docs folder
-  tabula-docs sync [dir]                        Sync src/ files to the installed version
-  tabula-docs validate [path]                   Validate an api.json file
-  tabula-docs serve [dir] [--port <number>]     Serve a docs folder locally
+  veld init [dir] [--template <name>]   Scaffold a new docs folder
+  veld sync [dir]                        Sync src/ files to the installed version
+  veld validate [path]                   Validate an api.json file
+  veld serve [dir] [--port <number>]     Serve a docs folder locally
 
 ${bold('init options')}
   [dir]                  Target folder name  ${dim('(wizard if omitted, default: docs)')}
@@ -160,17 +160,17 @@ ${bold('Global options')}
   --version, -v          Show the package version
 
 ${bold('Examples')}
-  tabula-docs init
-  tabula-docs init my-api-docs --template blog
-  tabula-docs sync my-api-docs
-  tabula-docs validate my-api-docs/api.json
-  tabula-docs serve my-api-docs --port 8080
+  veld init
+  veld init my-api-docs --template blog
+  veld sync my-api-docs
+  veld validate my-api-docs/api.json
+  veld serve my-api-docs --port 8080
 `);
 };
 
 const printVersion = (v) => console.log(v);
 
-// ─── Wizard helpers ───────────────────────────────────────────────────────────
+// â”€â”€â”€ Wizard helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Prompts the user for a single line of text input.
@@ -212,7 +212,7 @@ function promptSelect(question, items) {
 
 			const lines = [`${cyan('?')} ${question}`];
 			items.forEach((item, i) => {
-				const pointer = i === cursor ? cyan('❯') : ' ';
+				const pointer = i === cursor ? cyan('â¯') : ' ';
 				const label = i === cursor ? bold(item.label) : item.label;
 				lines.push(`  ${pointer} ${label}  ${dim(item.description)}`);
 			});
@@ -228,7 +228,7 @@ function promptSelect(question, items) {
 		process.stdin.setEncoding('utf8');
 
 		const onKey = (key) => {
-			// Ctrl-C — exit gracefully
+			// Ctrl-C â€” exit gracefully
 			if (key === '\x03') {
 				process.stdin.setRawMode(false);
 				process.stdin.pause();
@@ -239,7 +239,7 @@ function promptSelect(question, items) {
 			if (key === '\x1b[A') cursor = (cursor - 1 + items.length) % items.length; // up
 			if (key === '\x1b[B') cursor = (cursor + 1) % items.length; // down
 
-			// Enter — confirm
+			// Enter â€” confirm
 			if (key === '\r' || key === '\n') {
 				process.stdin.setRawMode(false);
 				process.stdin.pause();
@@ -260,7 +260,7 @@ function promptSelect(question, items) {
 	});
 }
 
-// ─── Commands ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Commands â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
  * Scaffolds a new Tabula docs folder.
@@ -273,10 +273,10 @@ function promptSelect(question, items) {
  * @param {string|undefined} template - Template name.
  */
 async function cmdInit(dir, template) {
-	// Step 1 — folder name
+	// Step 1 â€” folder name
 	const folderName = dir ?? (await promptText('Output folder name', 'docs'));
 
-	// Step 2 — template
+	// Step 2 â€” template
 	let templateName = template;
 	if (!templateName) {
 		templateName = await promptSelect('Choose a starting template', TEMPLATES);
@@ -288,7 +288,7 @@ async function cmdInit(dir, template) {
 		}
 	}
 
-	// Step 3 — paths
+	// Step 3 â€” paths
 	const target = resolve(folderName);
 	const srcDir = resolve(__dirname, '..', 'src');
 	const templateApi = resolve(__dirname, '..', 'examples', templateName, 'api.json');
@@ -302,24 +302,24 @@ async function cmdInit(dir, template) {
 		}
 	}
 
-	// Step 4 — scaffold
-	console.log(`\nScaffolding into ${bold(target)} …`);
+	// Step 4 â€” scaffold
+	console.log(`\nScaffolding into ${bold(target)} â€¦`);
 
 	await mkdir(target, { recursive: true });
 
 	await cp(srcDir, target, { recursive: true });
-	console.log(green('  ✓') + ' Copied src/ files (index.html, assets/scripts, assets/styles, assets/images)');
+	console.log(green('  âœ“') + ' Copied src/ files (index.html, assets/scripts, assets/styles, assets/images)');
 
 	await cp(templateApi, join(target, 'api.json'));
-	console.log(green('  ✓') + ` Copied api.json (${templateName} template)`);
+	console.log(green('  âœ“') + ` Copied api.json (${templateName} template)`);
 
 	console.log(`
 ${green('Done!')} Your docs folder is ready.
 
   cd ${folderName}
-  ${bold('$EDITOR api.json')}      — describe your API
-  ${bold('tabula-docs serve .')}        — preview in the browser
-  ${bold('tabula-docs validate .')}     — check for schema errors
+  ${bold('$EDITOR api.json')}      â€” describe your API
+  ${bold('veld serve .')}        â€” preview in the browser
+  ${bold('veld validate .')}     â€” check for schema errors
 `);
 }
 
@@ -334,39 +334,39 @@ async function cmdSync(dir) {
 	const srcDir = resolve(__dirname, '..', 'src');
 
 	if (!existsSync(target)) {
-		console.error(red(`Error: directory not found — ${target}`));
-		console.error('Run tabula-docs init to create a new docs folder.');
+		console.error(red(`Error: directory not found â€” ${target}`));
+		console.error('Run veld init to create a new docs folder.');
 		process.exit(1);
 	}
 
 	if (!existsSync(join(target, 'index.html'))) {
 		console.error(red(`Error: "${target}" does not look like a Tabula docs folder.`));
-		console.error('Expected to find index.html — are you pointing at the right directory?');
+		console.error('Expected to find index.html â€” are you pointing at the right directory?');
 		process.exit(1);
 	}
 
 	const currentVersion = await getLocalVersion();
 
-	console.log(`Syncing ${bold(target)} to tabula-docs ${bold(`v${currentVersion}`)} …\n`);
+	console.log(`Syncing ${bold(target)} to veld ${bold(`v${currentVersion}`)} â€¦\n`);
 
 	for (const file of SRC_FILES) {
 		const src = join(srcDir, file);
 		const dest = join(target, file);
 
 		if (!existsSync(src)) {
-			console.log(yellow('  –') + ` Skipped ${file} ${dim('(not found in package)')}`);
+			console.log(yellow('  â€“') + ` Skipped ${file} ${dim('(not found in package)')}`);
 			continue;
 		}
 
 		await cp(src, dest, { force: true });
-		console.log(green('  ✓') + ` Updated ${file}`);
+		console.log(green('  âœ“') + ` Updated ${file}`);
 	}
 
 	console.log(`
 ${green('Done!')} src/ files updated to v${currentVersion}.
 
   ${dim('api.json and custom assets were not modified.')}
-  Run ${bold('tabula-docs serve ' + dir)} to verify the update.
+  Run ${bold('veld serve ' + dir)} to verify the update.
 `);
 }
 
@@ -381,19 +381,19 @@ function cmdValidate(apiPath) {
 	const target = resolve(apiPath);
 
 	if (!existsSync(target)) {
-		console.error(red(`Error: file not found — ${target}`));
+		console.error(red(`Error: file not found â€” ${target}`));
 		process.exit(1);
 	}
 
-	console.log(`Validating ${bold(target)} …\n`);
+	console.log(`Validating ${bold(target)} â€¦\n`);
 
 	const child = spawn(process.execPath, [validator, target], { stdio: 'inherit' });
 
 	child.on('close', (code) => {
 		if (code === 0) {
-			console.log(`\n${green('✓')} No errors found.`);
+			console.log(`\n${green('âœ“')} No errors found.`);
 		} else {
-			console.error(`\n${red('✗')} Validation failed — fix the errors above before deploying.`);
+			console.error(`\n${red('âœ—')} Validation failed â€” fix the errors above before deploying.`);
 		}
 		process.exit(code);
 	});
@@ -410,7 +410,7 @@ function cmdServe(dir, port) {
 	const root = resolve(dir);
 
 	if (!existsSync(root)) {
-		console.error(red(`Error: directory not found — ${root}`));
+		console.error(red(`Error: directory not found â€” ${root}`));
 		process.exit(1);
 	}
 
@@ -429,7 +429,7 @@ function cmdServe(dir, port) {
 
 		if (!existsSync(filePath)) {
 			res.writeHead(404, { 'Content-Type': 'text/plain' });
-			res.end(`404 — Not found: ${pathname}`);
+			res.end(`404 â€” Not found: ${pathname}`);
 			return;
 		}
 
@@ -439,7 +439,7 @@ function cmdServe(dir, port) {
 
 	server.listen(port, 'localhost', () => {
 		console.log(`
-${green('✓')} Serving ${bold(root)}
+${green('âœ“')} Serving ${bold(root)}
 
   ${bold(`http://localhost:${port}`)}
 
@@ -450,7 +450,7 @@ Press ${bold('Ctrl+C')} to stop.
 	server.on('error', (err) => {
 		if (err.code === 'EADDRINUSE') {
 			console.error(red(`Error: port ${port} is already in use.`));
-			console.error(`Try a different port:  tabula-docs serve ${dir} --port ${port + 1}`);
+			console.error(`Try a different port:  veld serve ${dir} --port ${port + 1}`);
 		} else {
 			console.error(red(`Server error: ${err.message}`));
 		}
@@ -458,7 +458,7 @@ Press ${bold('Ctrl+C')} to stop.
 	});
 }
 
-// ─── Argument parser ──────────────────────────────────────────────────────────
+// â”€â”€â”€ Argument parser â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const args = process.argv.slice(2);
 
@@ -474,7 +474,7 @@ if (args.includes('--version') || args.includes('-v')) {
 	process.exit(0);
 }
 
-// Fire-and-forget update check — runs concurrently with the command, never
+// Fire-and-forget update check â€” runs concurrently with the command, never
 // blocks it, and prints the notice (if any) after the command output settles.
 const updateCheckPromise = checkForUpdates(localVersion);
 
@@ -503,7 +503,7 @@ if (templateIdx !== -1) {
 	}
 }
 
-// Positional argument — first non-flag token after the command, excluding flag values
+// Positional argument â€” first non-flag token after the command, excluding flag values
 const flagsWithValues = new Set();
 ['--port', '--template'].forEach((f) => {
 	const i = args.indexOf(f);
@@ -540,3 +540,4 @@ switch (command) {
 // Await the update check so the notice prints before the process exits.
 // For long-running commands (serve), this resolves quickly in the background.
 await updateCheckPromise;
+

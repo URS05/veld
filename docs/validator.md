@@ -1,6 +1,6 @@
-# Validator
+﻿# Validator
 
-Tabula ships a zero-dependency linter (`bin/validate-api.mjs`) that checks your `api.json` for structural and logical errors before the UI ever loads it.
+Veld ships a zero-dependency linter (`bin/validate-api.mjs`) that checks your `api.json` for structural and logical errors before the UI ever loads it.
 
 ---
 
@@ -17,7 +17,7 @@ node bin/validate-api.mjs path/to/api.json
 Or via the CLI (Phase 3):
 
 ```bash
-npx tabula-docs validate path/to/api.json
+npx veld validate path/to/api.json
 ```
 
 **Exit codes**
@@ -25,7 +25,7 @@ npx tabula-docs validate path/to/api.json
 | Code | Meaning |
 | --- | --- |
 | `0` | All clear (warnings may still be printed) |
-| `1` | One or more errors found — fix before deploying |
+| `1` | One or more errors found â€” fix before deploying |
 
 ---
 
@@ -39,7 +39,7 @@ npx tabula-docs validate path/to/api.json
 ### `defaultErrors`
 
 - Valid HTTP status codes (integers).
-- Unique codes — no duplicates.
+- Unique codes â€” no duplicates.
 - Each `response` object has a `code` field matching the parent, and a non-empty `message`.
 - `appliesTo` is non-empty and contains only recognized method strings (`GET-list`, `GET-single`, `POST`, `PUT`, `DELETE`).
 
@@ -79,7 +79,7 @@ npx tabula-docs validate path/to/api.json
 
 - Valid `type` values.
 - `select` parameters have a non-empty `options` array.
-- `min` ≤ `max` when both are defined.
+- `min` â‰¤ `max` when both are defined.
 
 ### Warnings (non-blocking)
 
@@ -127,7 +127,7 @@ The job exits with code `1` on any error, blocking the merge. Warnings are print
 
 ## Extending the validator
 
-`bin/validate-api.mjs` is a single self-contained ES module. Each check is a standalone function — adding a new rule means adding a new function and calling it from the main `validate()` entry point.
+`bin/validate-api.mjs` is a single self-contained ES module. Each check is a standalone function â€” adding a new rule means adding a new function and calling it from the main `validate()` entry point.
 
 The general pattern:
 
@@ -139,4 +139,5 @@ function checkMyNewRule(data, errors, warnings) {
 }
 ```
 
-Contributions are welcome — see [`CONTRIBUTING.md`](../CONTRIBUTING.md).
+Contributions are welcome â€” see [`CONTRIBUTING.md`](../CONTRIBUTING.md).
+

@@ -1,11 +1,11 @@
-{
+﻿{
   "settings": {
     "title": "Shop API",
-    "description": "E-commerce API — products, orders, customers, and media uploads.",
+    "description": "E-commerce API â€” products, orders, customers, and media uploads.",
     "version": "2.0.0",
     "baseUrl": "/api/v2",
     "links": [
-      { "label": "Docs", "url": "https://github.com/Lauwed/tabula-docs" },
+      { "label": "Docs", "url": "https://github.com/Lauwed/veld" },
       { "label": "Status", "url": "https://status.example.com" }
     ]
   },
@@ -17,12 +17,12 @@
     },
     {
       "code": 401,
-      "response": { "code": 401, "message": "Unauthorized — valid token required" },
+      "response": { "code": 401, "message": "Unauthorized â€” valid token required" },
       "appliesTo": ["POST", "PUT", "DELETE"]
     },
     {
       "code": 403,
-      "response": { "code": 403, "message": "Forbidden — insufficient permissions" },
+      "response": { "code": 403, "message": "Forbidden â€” insufficient permissions" },
       "appliesTo": ["POST", "PUT", "DELETE"]
     },
     {
@@ -32,7 +32,7 @@
     },
     {
       "code": 409,
-      "response": { "code": 409, "message": "Conflict — resource already exists" },
+      "response": { "code": 409, "message": "Conflict â€” resource already exists" },
       "appliesTo": ["POST"]
     },
     {
@@ -67,7 +67,7 @@
           "options": [
             { "name": "createdAt_desc", "label": "Newest first" },
             { "name": "createdAt_asc", "label": "Oldest first" },
-            { "name": "lastName_asc", "label": "Name A–Z" }
+            { "name": "lastName_asc", "label": "Name Aâ€“Z" }
           ]
         }
       ],
@@ -193,13 +193,13 @@
       "customEndpoints": [
         {
           "name": "upload-image",
-          "description": "Uploads and attaches a product image. The file is automatically converted to WebP and resized to 1200×1200 px.",
+          "description": "Uploads and attaches a product image. The file is automatically converted to WebP and resized to 1200Ã—1200 px.",
           "uri": "/{ID}/image",
           "method": "POST",
           "responses": [
             { "code": 200, "response": { "id": "integer", "imageUrl": "string" } },
-            { "code": 413, "response": { "code": 413, "message": "File too large — maximum size is 5 MB" } },
-            { "code": 415, "response": { "code": 415, "message": "Unsupported media type — use JPEG or PNG" } },
+            { "code": 413, "response": { "code": 413, "message": "File too large â€” maximum size is 5 MB" } },
+            { "code": 415, "response": { "code": 415, "message": "Unsupported media type â€” use JPEG or PNG" } },
             401,
             403,
             404,
@@ -210,7 +210,7 @@
             "fields": [
               {
                 "name": "file",
-                "label": "Product image (JPEG or PNG — max 5 MB)",
+                "label": "Product image (JPEG or PNG â€” max 5 MB)",
                 "type": "file",
                 "required": true,
                 "accept": ["image/jpeg", "image/png"],
@@ -259,7 +259,7 @@
               "code": 201,
               "response": { "id": "integer", "url": "string", "mimeType": "string", "sizeBytes": "integer" }
             },
-            { "code": 413, "response": { "code": 413, "message": "File too large — maximum size is 20 MB" } },
+            { "code": 413, "response": { "code": 413, "message": "File too large â€” maximum size is 20 MB" } },
             { "code": 415, "response": { "code": 415, "message": "Unsupported media type" } },
             401,
             500
@@ -269,7 +269,7 @@
             "fields": [
               {
                 "name": "file",
-                "label": "File (JPEG, PNG, GIF, WebP, SVG, PDF — max 20 MB)",
+                "label": "File (JPEG, PNG, GIF, WebP, SVG, PDF â€” max 20 MB)",
                 "type": "file",
                 "required": true,
                 "accept": ["image/jpeg", "image/png", "image/gif", "image/webp", "image/svg+xml", "application/pdf"],
@@ -429,3 +429,4 @@
     }
   ]
 }
+

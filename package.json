@@ -1,10 +1,10 @@
 {
-	"name": "tabula-docs",
+	"name": "veld",
 	"version": "0.1.4",
 	"description": "Static, dependency-free API documentation driven by a single JSON file.",
 	"type": "module",
 	"bin": {
-		"tabula": "bin/tabula.mjs"
+		"veld": "bin/veld.mjs"
 	},
 	"files": [
 		"src",
@@ -30,13 +30,13 @@
 	],
 	"author": "Lauwed",
 	"license": "MIT",
-	"homepage": "https://lauwed.github.io/tabula-docs/",
+	"homepage": "https://github.com/usher-2002/tabula-docs-to_make",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Lauwed/tabula-docs.git"
+		"url": "git+https://github.com/usher-2002/tabula-docs-to_make.git"
 	},
 	"bugs": {
-		"url": "https://github.com/Lauwed/tabula-docs/issues"
+		"url": "https://github.com/usher-2002/tabula-docs-to_make/issues"
 	},
 	"scripts": {
 		"prepare": "cp scripts/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit && cp scripts/pre-push .git/hooks/pre-push && chmod +x .git/hooks/pre-push",

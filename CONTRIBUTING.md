@@ -1,16 +1,16 @@
-# Contributing
+﻿# Contributing
 
-Thank you for considering a contribution to Tabula. This document covers everything you need to get started.
+Thank you for considering a contribution to Veld. This document covers everything you need to get started.
 
 ---
 
 ## Setup
 
-There is nothing to install. Tabula has no runtime dependencies and no build step.
+There is nothing to install. Veld has no runtime dependencies and no build step.
 
 ```bash
-git clone https://github.com/Lauwed/tabula-docs.git
-cd tabula-docs
+git clone https://github.com/Lauwed/Veld-docs.git
+cd Veld-docs
 ```
 
 To preview the UI locally, serve `src/` with any static server:
@@ -43,7 +43,7 @@ All three must exit with code `0` before opening a PR.
 node --test test/
 ```
 
-Tests use Node's built-in `node:test` module — no test runner to install.
+Tests use Node's built-in `node:test` module â€” no test runner to install.
 
 ---
 
@@ -63,7 +63,7 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org/
 Examples:
 
 ```
-feat: add --port flag to tabula serve
+feat: add --port flag to Veld serve
 fix: resolve foreignKey reference with uppercase name
 docs: clarify tokenRequired defaults in schema-reference
 ```
@@ -74,20 +74,20 @@ docs: clarify tokenRequired defaults in schema-reference
 
 1. Fork the repository and create a branch from `main`.
 2. Make your changes.
-3. Run `node bin/validate-api.mjs examples/*/api.json` — all must pass.
-4. Run `node --test test/` — all tests must pass.
+3. Run `node bin/validate-api.mjs examples/*/api.json` â€” all must pass.
+4. Run `node --test test/` â€” all tests must pass.
 5. Open a PR against `main` with a clear description of what and why.
 
-Please keep PRs focused — one concern per PR makes review faster.
+Please keep PRs focused â€” one concern per PR makes review faster.
 
-> **Note** — The `main` branch is protected. Direct pushes are not allowed.
+> **Note** â€” The `main` branch is protected. Direct pushes are not allowed.
 > All changes must go through a pull request and pass the CI checks before merging.
 
 ---
 
 ## What we will and won't accept
 
-Tabula is intentionally minimal. Before opening a PR for a new feature, please open an issue first to discuss it.
+Veld is intentionally minimal. Before opening a PR for a new feature, please open an issue first to discuss it.
 
 **Likely accepted:**
 
@@ -122,7 +122,8 @@ npx prettier --write "src/**/*.{js,css,html}" "src/*.html"
 
 This repository uses the following automated security tooling:
 
-- **Dependabot** — opens weekly PRs to keep `devDependencies` and GitHub Actions up to date. These PRs are labeled `dependencies` and go through the same CI checks as any other PR.
-- **CodeQL** — static analysis runs on every push and PR targeting `main`, and on a weekly schedule. Results are visible in the **Security → Code scanning** tab of the repository.
+- **Dependabot** â€” opens weekly PRs to keep `devDependencies` and GitHub Actions up to date. These PRs are labeled `dependencies` and go through the same CI checks as any other PR.
+- **CodeQL** â€” static analysis runs on every push and PR targeting `main`, and on a weekly schedule. Results are visible in the **Security â†’ Code scanning** tab of the repository.
 
-If you discover a security vulnerability, please report it privately via [GitHub Security Advisories](https://github.com/Lauwed/tabula-docs/security/advisories/new) rather than opening a public issue. See [`SECURITY.md`](./SECURITY.md) for the full policy and response timeline.
+If you discover a security vulnerability, please report it privately via [GitHub Security Advisories](https://github.com/Lauwed/Veld-docs/security/advisories/new) rather than opening a public issue. See [`SECURITY.md`](./SECURITY.md) for the full policy and response timeline.
+

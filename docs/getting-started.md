@@ -1,20 +1,20 @@
-# Getting started
+﻿# Getting started
 
-Get a live, interactive API documentation page running in under five minutes — no build step, no dependencies.
+Get a live, interactive API documentation page running in under five minutes â€” no build step, no dependencies.
 
 ---
 
 ## Prerequisites
 
-- A static file server, or Node.js ≥ 18 (for the CLI).
+- A static file server, or Node.js â‰¥ 18 (for the CLI).
 - Your `api.json` file. Not sure about the format? Start from [`examples/minimal/api.json`](../examples/minimal/api.json).
 
 ---
 
-## Option A — CLI (recommended)
+## Option A â€” CLI (recommended)
 
 ```bash
-npx tabula-docs init my-docs
+npx veld init my-docs
 cd my-docs
 ```
 
@@ -30,7 +30,7 @@ Then open [http://localhost:3000](http://localhost:3000) (or whichever port your
 
 ---
 
-## Option B — Manual
+## Option B â€” Manual
 
 1. Download or clone this repository.
 2. Copy the contents of `src/` into your project folder.
@@ -39,18 +39,18 @@ Then open [http://localhost:3000](http://localhost:3000) (or whichever port your
 
 ```
 my-docs/
-├── index.html
-├── assets/
-│   ├── images/
-│   ├── scripts/
-│   │   ├── pretty-json.js
-│   │   ├── constants.js
-│   │   ├── endpoints.js
-│   │   ├── inputs.js
-│   │   └── script.js
-│   └── styles/
-│       └── styles.css
-└── api.json        ← your file
+â”œâ”€â”€ index.html
+â”œâ”€â”€ assets/
+â”‚   â”œâ”€â”€ images/
+â”‚   â”œâ”€â”€ scripts/
+â”‚   â”‚   â”œâ”€â”€ pretty-json.js
+â”‚   â”‚   â”œâ”€â”€ constants.js
+â”‚   â”‚   â”œâ”€â”€ endpoints.js
+â”‚   â”‚   â”œâ”€â”€ inputs.js
+â”‚   â”‚   â””â”€â”€ script.js
+â”‚   â””â”€â”€ styles/
+â”‚       â””â”€â”€ styles.css
+â””â”€â”€ api.json        â† your file
 ```
 
 ---
@@ -80,7 +80,7 @@ Open `api.json` and describe your API. The minimal structure looks like this:
 }
 ```
 
-Reload the page — the UI updates immediately. No rebuild needed.
+Reload the page â€” the UI updates immediately. No rebuild needed.
 
 ---
 
@@ -104,5 +104,6 @@ See [`docs/validator.md`](./validator.md) for the full list of checks.
 | --- | --- |
 | Customize colors, logo, dark mode | [`docs/theming.md`](./theming.md) |
 | Add non-CRUD endpoints | [`docs/custom-endpoints.md`](./custom-endpoints.md) |
-| Deploy to GitHub Pages, Vercel… | [`docs/deployment.md`](./deployment.md) |
+| Deploy to GitHub Pages, Vercelâ€¦ | [`docs/deployment.md`](./deployment.md) |
 | Full schema reference | [`docs/schema-reference.md`](./schema-reference.md) |
+
