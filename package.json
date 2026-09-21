@@ -45,6 +45,6 @@
 		"fmt": "prettier --write \"package.json\" \"src/index.html\" \"src/assets/**/*.{js,css}\""
 	},
 	"devDependencies": {
-		"prettier": "^3.8.3"
+		"prettier": "^3.9.8"
 	}
 }
